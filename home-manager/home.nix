@@ -86,10 +86,10 @@
         
         "${mod}+s" = "layout stacking";
         "${mod}+w" = "layout tabbed";
-        "${mod}+e" = "layout toggke split";
+        "${mod}+e" = "layout toggle split";
         
         "${mod}+Shitf+space" = "floating toggle";
-        "${mod}+space" = "focut toggle";
+        "${mod}+space" = "focus mode_toggle";
 
         "${mod}+1" = "workspace ${ws1}";
         "${mod}+2" = "workspace ${ws2}";
