@@ -67,7 +67,7 @@
       keybindings = lib.mkOptionDefault {
         "${mod}+Return" = "exec i3-sensible-terminal";
         "${mod}+Shift+q" = "kill";
-        "${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run  -fn 'DejaVu Sans Mono-12' -nb '#555555'";
+        "${mod}+d" = "exec dmenu_run  -fn 'DejaVu Sans Mono-12' -nb '#555555'";
 
         "${mod}+j" = "focus left";
         "${mod}+k" = "focus down";
@@ -113,9 +113,9 @@
         "${mod}+Shift+9" = "move container to workspace ${ws9}";
         "${mod}+Shift+0" = "move container to workspace ${ws10}";
 
-        "XF86AudioRaiseVolume" = "exec --no-startup-id ${pkgs.pulseaudio}/bin/pactl set-sink-volume 0 +5% && pkill -RTMIN+10 i3blocks";
-        "XF86AudioLowerVolume" = "exec --no-startup-id ${pkgs.pulseaudio}/bin/pactl set-sink-volume 0 -5% && pkill -RTMIN+10 i3blocks";
-        "XF86AudioMute" = "exec --no-startup-id ${pkgs.pulseaudio}/bin/pactl set-sink-mute 0 toggle && pkill -RTMIN+10 i3blocks";
+        "XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume 0 +5% && pkill -RTMIN+10 i3blocks";
+        "XF86AudioLowerVolume" = "exec --no-startup-id pactl set-sink-volume 0 -5% && pkill -RTMIN+10 i3blocks";
+        "XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute 0 toggle && pkill -RTMIN+10 i3blocks";
         
         "XF86MonBrightnessUp" = "exec xbacklight -inc 20";
         "XF86MonBrightnessDown" = "exec xbacklight -dec 20";
@@ -149,7 +149,7 @@
 
       bars = [
         {
-          statusCommand = "${pkgs.i3blocks}/bin/i3blocks";
+          statusCommand = "i3blocks";
           position = "top";
           fonts = [
             "DejaVu Sans Mono"
