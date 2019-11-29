@@ -1,0 +1,38 @@
+[audio]
+interval=once
+command=~/.config/i3/scripts/audio1.sh
+signal=10
+color=#f19950
+
+[wifi]
+label=
+command=~/.config/i3/scripts/network1.sh
+interval=10
+
+#[battery]
+#command=~/.config/i3/scripts/battery.py
+#markup=pango
+#interval=30
+
+[battery-plus]
+command=~/.config/i3/scripts/battery-plus
+markup=pango
+instance=BAT0
+interval=30
+
+#[kbdd_layout]
+#command=~/.config/i3/scripts/kbdd_layout
+#interval=persist
+
+[keymap]
+label=
+#command=xkb-switch -W
+#or
+command=bash -c 'xkb-switch;xkb-switch -W'
+interval=persist
+#border=#0d5eaf
+
+[time]
+command= date '+%d/%m/%Y   %H:%M '
+label= 
+interval=1

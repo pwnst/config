@@ -14,6 +14,7 @@
 };
   nixpkgs.config = {
     allowUnfree = true;
+    oraclejdk.accept_license = true;
     packageOverrides = pkgs: rec {
       polybar = pkgs.polybar.override {
         i3Support = true;
@@ -62,6 +63,7 @@
 # coding
     maven
     python3
+    oraclejdk
     git
 # terminal
     termite
