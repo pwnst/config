@@ -1,0 +1,21 @@
+
+xmonad.hs:73:34: warning: [-Wdeprecations]
+    In the use of ‘defaultPP’ (imported from XMonad.Hooks.DynamicLog):
+    Deprecated: "Use def (from Data.Default, and re-exported by XMonad.Hooks.DynamicLog) instead."
+   |
+73 | myLogHook h = dynamicLogWithPP $ defaultPP
+   |                                  ^^^^^^^^^
+
+xmonad.hs:113:5: warning: [-Wdeprecations]
+    In the use of ‘defaultXPConfig’ (imported from XMonad.Prompt):
+    Deprecated: "Use def (from Data.Default, and re-exported from XMonad.Prompt) instead."
+    |
+113 |     defaultXPConfig { font                  = barFont
+    |     ^^^^^^^^^^^^^^^
+
+xmonad.hs:137:17: warning: [-Wtabs]
+    Tab character found here, and in one further location.
+    Please use spaces instead.
+    |
+137 |     , ((modMask,                            xK_o        ), spawn "chromium-browser")
+    |                 ^^^^^^^^

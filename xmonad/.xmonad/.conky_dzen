@@ -1,0 +1,9 @@
+background yes
+out_to_console yes
+out_to_x no
+# Update interval in seconds
+# #ebac54
+update_interval 1
+
+TEXT
+${exec dbus-send --print-reply=literal --dest=ru.gentoo.KbddService /ru/gentoo/KbddService ru.gentoo.kbdd.getCurrentLayout 2>/dev/null | sed -un 's/^.*uint32 //p' | sed -e 's/1/ru/' | sed -e 's/0/en/'} ^fg(\#ebac54) ^i(/home/pwnst/.xmonad/dzen2/battery.xbm) ^fg(\#ffffff)${battery_percent BAT0} ^fg(\#ebac54) ^i(/home/pwnst/.xmonad/dzen2/battery.xbm)  ^fg(\#ffffff)${battery_percent BAT1} ^fg(\#ebac54) ^i(/home/pwnst/.xmonad/dzen2/volume.xbm) ^fg(\#ffffff)${exec amixer get Master | egrep -o "[0-9]+%" | head -1 | egrep -o "[0-9]*"}% ^fg(\#ebac54) ^i(/home/pwnst/.xmonad/dzen2/clock.xbm) ^fg(\#ffffff) ${time %R} ^fg(\#FFFFFF) ${time %d %m %Y} 
