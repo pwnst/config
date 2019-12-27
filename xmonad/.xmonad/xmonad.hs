@@ -16,6 +16,7 @@ import XMonad.Util.Run
 
 
 import XMonad.Actions.CycleWS
+import XMonad.Actions.FloatKeys
 
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
@@ -45,7 +46,7 @@ import qualified Data.Map as M
 myTerminal      = "termite"
 modMask' :: KeyMask
 modMask' = mod4Mask
-myWorkspaces    = ["1:main","2:web","3:vim","4:chat","5:music", "6:gimp", "7:misc"]
+myWorkspaces    = ["1:main","2:web","3:ide","4:term","5:chat", "6:gimp", "7:misc"]
 
 myXmonadBar = "dzen2 -dock -x '0' -y '0' -h '24' -w '920' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'"
 myStatusBar = "conky -c /home/pwnst/.xmonad/.conky_dzen | dzen2 -dock -x '920' -w '1000' -h '24' -ta 'r' -bg '#1B1D1E' -fg '#FFFFFF' -y '0'"
@@ -67,6 +68,9 @@ main = do
       , borderWidth         = 2
       , startupHook         = setWMName "LG3D"
 }
+
+manageHook' :: ManageHook
+manageHook' = (composeAll . concat $ [[ className =? c --> doShift "1:main" | c <- ["telegram-desktop"]]])
 
 
 myLogHook :: Handle -> X ()
@@ -102,36 +106,23 @@ colorWhite          = "#CCCCC6"
 colorNormalBorder   = "#CCCCC6"
 colorFocusedBorder  = "#fd971f"
 
-
 barFont  = "terminus"
 barXFont = "inconsolata:size=12"
 xftFont = "xft: inconsolata-14"
-xftF = "xft: iosevka-term-12"
-
-mXPConfig :: XPConfig
-mXPConfig =
-    defaultXPConfig { font                  = barFont
-                    , bgColor               = colorDarkGray
-                    , fgColor               = colorOrange
-                    , bgHLight              = colorOrange
-                    , fgHLight              = colorDarkGray
-                    , promptBorderWidth     = 0
-                    , height                = 14
-                    , historyFilter         = deleteConsecutive
-                    }
-largeXPConfig :: XPConfig
-largeXPConfig = mXPConfig
-                { font = xftF
-                , height = 22
-                , position = Top
-                }
+rofi = "rofi -combi-modi drun,run -show drun -font 'terminus 12' -theme gruvbox-dark-soft"
 
 keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
-    [ ((modMask,                    xK_p        ), runOrRaisePrompt largeXPConfig)
+    [ ((modMask,                    xK_p        ), spawn rofi)
     , ((modMask .|. shiftMask,      xK_Return   ), spawn $ XMonad.terminal conf)
-    , ((modMask,                    xK_F2       ), spawn "gmrun")
+    , ((modMask,                    xK_F2       ), spawn "dmenu")
     , ((modMask .|. shiftMask,      xK_c        ), kill)
     , ((modMask .|. shiftMask,      xK_l        ), spawn "slock")
+    -- FloatKeys
+    , ((modMask,               xK_d     ), withFocused (keysResizeWindow (0, 10) (1,1)))
+    , ((modMask,               xK_s     ), withFocused (keysResizeWindow (10, 0) (1,1)))
+    , ((modMask .|. shiftMask, xK_d     ), withFocused (keysResizeWindow (0,-10) (1,1)))
+    , ((modMask .|. shiftMask, xK_s     ), withFocused (keysResizeWindow (-10,0) (1,1)))
+    , ((modMask,               xK_a     ), withFocused (keysMoveWindowTo (980,600) (1%2,1%2)))
     -- Programs
     , ((0,                          xK_Print    ), spawn "scrot -e 'mv $f ~/screenshots/'")
     , ((modMask,		            xK_o        ), spawn "chromium-browser")
