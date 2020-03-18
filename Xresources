@@ -3,6 +3,7 @@
 XTerm*faceName: Iosevka Term
 xterm*faceSize: 12
 xterm*metaSendsEscape:  true
+XTerm.vt100.scrollBar: false
 
 XTerm*vt100.translations: #override \
     Shift Ctrl <Key> C: copy-selection(CLIPBOARD) \n\
