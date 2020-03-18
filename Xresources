@@ -1,4 +1,4 @@
-#include "/home/pwnst/repos/Xresources-themes/base16-monokai-256.Xresources"
+#include "/home/pwnst/config/xterm-themes/base16-monokai-256.Xresources"
 
 XTerm*faceName: Iosevka Term
 xterm*faceSize: 12
