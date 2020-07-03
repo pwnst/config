@@ -33,3 +33,5 @@ gsettings set org.gnome.shell.keybindings switch-to-application-6 "[]"
 gsettings set org.gnome.shell.keybindings switch-to-application-7 "[]"
 gsettings set org.gnome.shell.keybindings switch-to-application-8 "[]"
 gsettings set org.gnome.shell.keybindings switch-to-application-9 "[]"
+
+gsettings set org.compiz.core:/org/compiz/profiles/unity/plugins/core/ vsize 10
